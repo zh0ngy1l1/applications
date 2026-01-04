@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cambridge Personal Statement</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        hr {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        @media (max-width: 600px) {
+            body {
+                margin: 15px;
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
 <body>
-  <div id="login">
-    <input type="password" id="pw" placeholder="Enter password">
-    <button id="btn">Unlock</button>
-  </div>
-  <div id="content"></div>
 
-  <script>
-  async function load() {
-    const pw = document.getElementById('pw').value;
-    const enc = new Uint8Array(await fetch('secret.html.enc').then(r => r.arrayBuffer()));
+    <p>The preponderance of today’s youth, including myself, naturally chooses the expedient over the meaningful. When faced with a task which demands slowing down and thinking, putting pen on paper, or discussing with a colleague or mentor, often the pernicious alternative of an AI query is chosen, thanks to its ease of access and quickly gratifying response. In such scenarios, the act of thinking, making the "sacrifice" of some time and mental effort, is the way to follow God and reject the Devil's offer of swift success.</p>
 
-    const salt = enc.slice(0, 16);
-    const iv = enc.slice(16, 28);
-    const tag = enc.slice(28, 44);
-    const data = enc.slice(44);
-    const ciphertext = new Uint8Array([...data, ...tag]);
+    <p>Only the strong-willed can avert the allure of such modern-day amenities by their own strength. Therefore, it is a task for institutions to protect the talent which would otherwise be devoured by the growing miasma of expedience. A rigorous academic foundation grounded in tradition and delivered uncompromisingly, like the Tripos, is an ideal shelter from this scourge. To develop my mind and guard it against the temptations of the present and future, I must not study mathematics alone, but also become versed in debate and writing, both disciplines regarded as essential for the soul yet in decline amid growing dependence on technology.</p>
 
-    const keyMaterial = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
-    const key = await crypto.subtle.deriveKey(
-      { name: "PBKDF2", salt, iterations: 100000, hash: "SHA-256" },
-      keyMaterial, { name: "AES-GCM", length: 256 }, false, ["decrypt"]
-    );
-
-    try {
-      const dec = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
-      document.getElementById('login').remove(); // remove password box
-      document.getElementById('content').innerHTML = new TextDecoder().decode(dec);
-    } catch (e) {
-      alert("Wrong password or corrupted file");
-    }
-  }
-
-  // trigger unlock on Enter
-  document.getElementById('pw').addEventListener('keydown', e => {
-    if (e.key === 'Enter') load();
-  });
-
-  // trigger unlock on button click
-  document.getElementById('btn').addEventListener('click', load);
-  </script>
 </body>
 </html>

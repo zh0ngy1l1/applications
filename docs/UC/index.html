@@ -1,45 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Personal Statement</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        hr {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        @media (max-width: 600px) {
+            body {
+                margin: 15px;
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
 <body>
-  <div id="login">
-    <input type="password" id="pw" placeholder="Enter password">
-    <button id="btn">Unlock</button>
-  </div>
-  <div id="content"></div>
 
-  <script>
-  async function load() {
-    const pw = document.getElementById('pw').value;
-    const enc = new Uint8Array(await fetch('secret.html.enc').then(r => r.arrayBuffer()));
+    <h1>1. Describe an example of your leadership experience in which you have positively influenced others, helped resolve disputes, or contributed to group efforts over time.</h1>
+    <p>My accomplishments as part of Team Finland in various international math contests go beyond the awards I received; I have consistently taken initiative to strengthen our team cohesion and performance.</p>
 
-    const salt = enc.slice(0, 16);
-    const iv = enc.slice(16, 28);
-    const tag = enc.slice(28, 44);
-    const data = enc.slice(44);
-    const ciphertext = new Uint8Array([...data, ...tag]);
+    <p>This includes organising several mock contests for the Finnish Baltic Way team. I took charge of the entire process: inviting the team to Helsinki, finding substitutes for absentees, booking meeting rooms, and supplying writing equipment for everyone. We held multiple sessions together, supplementing the single official mock exam provided by national coaching. These mock contests improved our team dynamics before the contest and helped us to place noticeably better than in previous editions.</p>
 
-    const keyMaterial = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
-    const key = await crypto.subtle.deriveKey(
-      { name: "PBKDF2", salt, iterations: 100000, hash: "SHA-256" },
-      keyMaterial, { name: "AES-GCM", length: 256 }, false, ["decrypt"]
-    );
+    <p>I also designed and produced team uniforms for our team competing at IMO 2025. Many countries arrive with coordinated outfits, and I felt Finland should have the same sense of identity and presence. After discussing the idea with my teammates, I handled the design, ordering, and distribution. The shirts were warmly received, and we wore them proudly at the opening and closing ceremonies. While no previous Finnish team had uniforms, the success of this project demonstrated that small initiatives can meaningfully enhance team spirit, and I hope future teams continue the tradition I started.</p>
 
-    try {
-      const dec = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
-      document.getElementById('login').remove(); // remove password box
-      document.getElementById('content').innerHTML = new TextDecoder().decode(dec);
-    } catch (e) {
-      alert("Wrong password or corrupted file");
-    }
-  }
+    <p>These projects demonstrate my leadership, complementing my strong mathematical skills and making me a valuable asset in teamwork. From organising mock contests to introducing team uniforms, I have worked to strengthen a sense of preparation and identity that future teams can build on.</p>
 
-  // trigger unlock on Enter
-  document.getElementById('pw').addEventListener('keydown', e => {
-    if (e.key === 'Enter') load();
-  });
+    <hr>
 
-  // trigger unlock on button click
-  document.getElementById('btn').addEventListener('click', load);
-  </script>
+    <h1>2. Every person has a creative side, and it can be expressed in many ways: problem solving, original and innovative thinking, and artistically, to name a few. Describe how you express your creative side.</h1>
+
+    <p>I've studied percussion since primary school, mainly solo marimba and timpani. Musical performance lets me use my creativity, giving me the freedom to interpret pieces based on my musical intuition.</p>
+
+    <p>As the principal timpani of the Tapiola Youth Symphony Orchestra, I often face challenging projects where the whole character of the music is shaped by my interpretation. My most recent experience of this kind was the finale of Sibelius's Violin Concerto. The timpani sets the scene for the soloist's entrance, and my phrasing is very important for the orchestral whole. I handle this responsibility by first reaching technical fluency, upon which I may build more abstract musical ideas. For this purpose, my hobby of exploring many different recordings of the same piece made throughout history and comparing their similarities and differences is very useful. I can rely on my intuition, honed through frequent playing and active listening, to tell which version I like most and to incorporate its traits to my own playing.</p>
+
+    <p>In contrast to orchestral music, however, my creativity receives the most gratifying response in solo performance. I'm always excited to hear piano or violin repertoire such as Bach played on the marimba. My curiosity often leads me to learn such pieces myself, like the D minor Concerto BWV 1052, which is my largest project yet. The fact that something originally composed for the Baroque harpsichord sounds deliberate and beautiful on a modern instrument like the marimba shows both the genius of the composer and the courage and ability of the artist to transform the music. Arranging a piano score for the marimba and accounting for differences in the instruments' mechanism is a creative task with the goal of creating good music yet no set instructions to follow. This makes successful interpretations all the more rewarding, just like solving a difficult problem in a different way from the textbook.</p>
+
+    <p>To me, creative work in all fields, including music, demands a foundation of rigour and exactitude, and its value increases with my knowledge and experience of the subject.</p>
+
+    <hr>
+
+    <h1>3. What would you say is your greatest talent or skill? How have you developed and demonstrated that talent over time?</h1>
+
+    <p>My strongest skill lies in mathematical intuition, which I develop and use in both problem-solving and learning.</p>
+
+    <p>When solving a difficult math olympiad problem, I gather information through repeated experimentation and rely on my intuition to recognise what information gets me closer to the final solution. Even when I'm stuck unknowing what to do, I can remain focused and deeply immersed in the process of investigating the problem and trying to figure out the right idea. The moment of realising that the idea really leads to the solution is truly gratifying and worth all the effort and patience needed to get there. For easier problems, such as those in the National Contest, I am sometimes able to see the steps to reach the solution immediately. Therefore, my method of preparing for these contests, outside of learning the necessary theory, is simply doing many problems and through that honing my intuition, both for how to experiment and for determining whether the result is useful.</p>
+
+    <p>My strong intuition in problem-solving also translates to learning, where I like to focus on ensuring that the concept or technique is intuitively understood, through proof or motivation. I learn things best when I am able to apply them in difficult problems which have me struggle for a while. This is why, when I work on textbooks like 'Euclidean Geometry in Mathematical Olympiads' by Evan Chen, I rarely skip practice problems, and only give up to read the solution after hours of fruitless trial. For me, this method of self-study is highly efficient in advancing my problem-solving intuition while simultaneously expanding my arsenal of techniques.</p>
+
+    <p>Having experienced the rapid growth of my intuition in a specific subject like geometry, achieved through repeatedly solving difficult problems and getting stuck, I now view demanding tasks in any subject as opportunities to improve my abilities.</p>
+
+    <hr>
+
+    <h1>4. Describe how you have taken advantage of a significant educational opportunity or worked to overcome an educational barrier you have faced.</h1>
+
+    <p>I spent an unforgettable month of this past summer attending the Yau Mathcamp in Shanghai. I sought an experience closer to real mathematics research, in contrast to my mathematical contest endeavours, so that I could finally decide whether to further pursue the subject or study something else instead. The camp not only gave me the confidence to practise mathematics, but also let me experience research for myself, a joy I had not expected to receive before college.</p>
+
+    <p>The problem sheets accompanying daily lectures always had a nice gradient of difficulty, each containing several tricky problems that I would not solve alone. I asked coaches for hints, discussed approaches with friends, and orally presented solutions to the professor. Structurally, the camp was not all that different from math contest training camps, except for lasting a month instead of a weekend. I could immerse myself in learning a new area of mathematics on a familiar schedule. The camp boosted my confidence that mathematics at university would not be too intense to handle, but rather more rewarding thanks to its difficulty.</p>
+
+    <p>The highlight of this camp for me was not the teaching itself, but the chance to work on a Mathcamp Project. My team of three spent several hours daily researching a problem in Diophantine approximation, a topic first introduced to us in the camp. This was also my first time reading academic articles in mathematics, and I was wholly devoted to the project. Knowing that our work was truly novel felt quite empowering, and we were able to enjoy and finalise the results of our research into a presentation earning Gold Prize.</p>
+
+    <p>The camp broadened my view beyond the limited scope of olympiad problems that had defined most of my perception of mathematics, and showed me what the study and research of mathematics at university would feel like.</p>
+
 </body>
 </html>

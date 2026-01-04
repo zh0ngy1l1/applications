@@ -1,45 +1,258 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UC Activities and Awards</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.3em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 0.7em;
+        }
+        .label {
+            font-weight: bold;
+        }
+        hr {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
 <body>
-  <div id="login">
-    <input type="password" id="pw" placeholder="Enter password">
-    <button id="btn">Unlock</button>
-  </div>
-  <div id="content"></div>
 
-  <script>
-  async function load() {
-    const pw = document.getElementById('pw').value;
-    const enc = new Uint8Array(await fetch('secret.html.enc').then(r => r.arrayBuffer()));
+<h1>UC Activities and Awards</h1>
 
-    const salt = enc.slice(0, 16);
-    const iv = enc.slice(16, 28);
-    const tag = enc.slice(28, 44);
-    const data = enc.slice(44);
-    const ciphertext = new Uint8Array([...data, ...tag]);
+<a name="1"></a>
+<h2>1. Bronze Medal, International Mathematical Olympiad 2024</h2>
 
-    const keyMaterial = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
-    const key = await crypto.subtle.deriveKey(
-      { name: "PBKDF2", salt, iterations: 100000, hash: "SHA-256" },
-      keyMaterial, { name: "AES-GCM", length: 256 }, false, ["decrypt"]
-    );
+<p><span class="label">Level of recognition:</span> International</p>
+<p><span class="label">Type of award:</span> Academic</p>
+<p><span class="label">Grade level when awarded:</span> 10th grade</p>
 
-    try {
-      const dec = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
-      document.getElementById('login').remove(); // remove password box
-      document.getElementById('content').innerHTML = new TextDecoder().decode(dec);
-    } catch (e) {
-      alert("Wrong password or corrupted file");
-    }
-  }
+<p><span class="label">Award requirements:</span>
+At IMO 2024, 326 medals were given, out which 145 were bronze. A bronze medal indicates placing above half the
+participants, and I placed 252nd with 17 as a result of solving problems 1 and 5, and getting partial solutions for
+problems 2 and 4.
+</p>
 
-  // trigger unlock on Enter
-  document.getElementById('pw').addEventListener('keydown', e => {
-    if (e.key === 'Enter') load();
-  });
+<p><span class="label">What you did to earn award:</span>
+I had started practicing specifically for the IMO on August 2023, after learning that I was selected for the Finnish team
+for Baltic Way 2023 in Germany based on the TST. I prepared by working on Evan Chen's EGMO and Khurmi's MONT,
+alongside actively attending national and Nordic training camps whenever possible.
+</p>
 
-  // trigger unlock on button click
-  document.getElementById('btn').addEventListener('click', load);
-  </script>
+<hr>
+
+<a name="2"></a>
+<h2>2. Honorable Mention, Romanian Master of Mathematics 2025</h2>
+
+<p><span class="label">Level of recognition:</span> International</p>
+<p><span class="label">Type of award:</span> Academic</p>
+<p><span class="label">Grade level when awarded:</span> 11th grade</p>
+
+<p><span class="label">Award requirements:</span>
+The strongest contestant from each Nordic country, based on a TST camp in December, is selected and together form
+team Nordics to participate in the Romanian Master of Mathematics. Then, at the contest, an HM is awarded to
+everyone with a full solve.
+</p>
+
+<p><span class="label">What you did to earn award:</span>
+Getting selected to the RMM team means I scored the most out of Finnish candidates at the team selection test. At
+RMM, I produced a perfect solution to the first problem. I had not practiced for just the RMM; the problems here are
+different in character, and generally more difficult than the IMO which I prepared for almost daily since IMO 2024.
+</p>
+
+<hr>
+
+<h2>3. Gold Prize, 2025 Yau Mathcamp Best Project Award</h2>
+
+<p><span class="label">Level of recognition:</span> National; International</p>
+<p><span class="label">Type of award:</span> Academic</p>
+<p><span class="label">Grade level when awarded:</span> 11th grade</p>
+
+<p><span class="label">Award requirements:</span>
+The gold prize is given to the top three Yau Mathcamp projects. Each project is by a team of three participants and
+involves research under a Mathcamp professor and presenting the results. Professors choose the recipients based on
+the presentation.
+</p>
+
+<p><span class="label">What you did to earn award:</span>
+My project is in multidimensional diophantine approximation, which I was introduced to at the camp. My team worked
+on it full-time for two weeks at the camp, and produced a novel result. Then we paid attention to make the presentation
+not too involved, so that professors outside this specific field would still understand something.
+</p>
+
+<hr>
+
+<h2>4. 1st Place, MAOL National High School Math Contest 2024</h2>
+
+<p><span class="label">Level of recognition:</span> National</p>
+<p><span class="label">Type of award:</span> Academic</p>
+<p><span class="label">Grade level when awarded:</span> 10th grade</p>
+
+<p><span class="label">Award requirements:</span>
+In 2024 (10th grade), I tied for first place with another contestant at the final round of the Finnish high school contest.
+This means perfect solutions for every problem.
+</p>
+
+<p><span class="label">What you did to earn award:</span>
+I needed to score well enough in the first round to qualify for the final round. Of course, my preparation for the IMO is
+wholly applicable here.
+</p>
+
+<hr>
+
+<h2>5. 1st Place, MAOL National High School Math Contest 2025</h2>
+
+<p><span class="label">Level of recognition:</span> National</p>
+<p><span class="label">Type of award:</span> Academic</p>
+<p><span class="label">Grade level when awarded:</span> 11th grade</p>
+
+<p><span class="label">Award requirements:</span>
+This year (2025, 11th grade) first place was not shared.
+</p>
+
+<p><span class="label">What you did to earn award:</span>
+I needed to score well enough in the first round to qualify for the final round. Of course, my preparation for the IMO is
+wholly applicable here.
+</p>
+
+<hr>
+
+<h2>6. Honorable Mention, International Mathematical Olympiad 2025</h2>
+
+<p><span class="label">Level of recognition:</span> International</p>
+<p><span class="label">Type of award:</span> Academic</p>
+<p><span class="label">Grade level when awarded:</span> 11th grade</p>
+
+<p><span class="label">Award requirements:</span>
+My failure is due to time management issues during the contest: more problems were now of a 'doable' difficulty, so I
+skipped around more and was less focused. I was one point away from Bronze, so I only received an HM thanks to
+problem 1.
+</p>
+
+<p><span class="label">What you did to earn award:</span>
+I had practiced so much between the previous IMO and this one. As preparation, I've done basically all of EGMO, and
+the first few chapters of MONT. Moreover, I have solved about 100 IMO shortlist problems. Unfortunately, since I rarely
+wrote the full solutions down in my practice, my writeups during the IMO took much longer than expected.
+</p>
+
+
+<hr>
+
+<h2>7. Finalist, Datatahti National Programming Contest 2025</h2>
+
+<p><span class="label">Level of recognition:</span> National</p>
+<p><span class="label">Type of award:</span> Academic</p>
+<p><span class="label">Grade level when awarded:</span> 11th grade</p>
+
+<p><span class="label">Award requirements:</span>
+This year, the top 23 contestants of the opening round advance to the finals.
+I received 18th place with 460 points in the opening round, and 14th place with 168 points in the finals.
+The finals were IOI-style.
+</p>
+
+<p><span class="label">What you did to earn award:</span>
+I started doing CSES intermittently in August 2023, and I didn't train competitive programming outside of that.
+Closer to the first round I started training with Antti Laaksosen book and doing more problems from the Finnish
+problem set. I also avoided using AI or external help, so I often spent hours on a single problem.
+</p>
+
+<hr>
+
+<h2>8. Finalist, Datatahti National Programming Contest 2026</h2>
+
+<p><span class="label">Level of recognition:</span> National</p>
+<p><span class="label">Type of award:</span> Academic</p>
+<p><span class="label">Grade level when awarded:</span> 12th grade</p>
+
+<p><span class="label">Award requirements:</span>
+I placed 4th place in the first round; only 11 points from full points.
+The first round had 14 days of submission time, but was otherwise a standard individual programming competition.
+The final round is upcoming on 17 Jan.
+</p>
+
+<p><span class="label">What you did to earn award:</span>
+I did not practice much between the 2025 Final Round and this contest.
+But I have a total of 79 tasks solved in the Finnish problem set on CSES as of 12 Nov 2025.
+I don't expect to place as high in the final round, but top 10 is definitely within reach.
+</p>
+
+<hr>
+
+<h2>9. Educational Preparation Program</h2>
+
+<h2>Yau Mathcamp 2025</h2>
+
+<p>
+The camp consists of university math courses (Topology and Number Theory) taught to secondary school students,
+and a collaborative research project guided by a professor of the subject. I learned the basics of topology and
+dove into Diophantine approximation more deeply. In the exams I placed above more than half the participants.
+</p>
+
+<p><span class="label">Grade participation:</span> 11th grade</p>
+<p><span class="label">Time commitment:</span> 168.0 hours per week, 4.0 weeks per year</p>
+
+<hr>
+
+<h2>10. Extracurricular Activity</h2>
+
+<h2>Principal Timpani, Tapiola Youth Symphony Orchestra</h2>
+
+<p>
+I play the timpani at the symphony orchestra of my music school. We have four periods yearly, each with new
+repertoire and culminating in performances. I've improved as a timpanist and gained recognition so that I am
+occasionally invited to perform in various orchestras. Reported time includes practice outside orchestra rehearsal.
+</p>
+
+<p><span class="label">Grade participation:</span> 9th–12th grade</p>
+<p><span class="label">Time commitment:</span> 5.0 hours per week, 20.0 weeks per year</p>
+
+<hr>
+
+<h2>11. Extracurricular Activity</h2>
+
+<h2>Leader of Mathematics Club at My School</h2>
+
+<p>
+I led Mathematics Club with two classmates, teaching theory for math contests to underclassmen weekly.
+We planned the topics and activities, and I was in charge of much of the teaching.
+I learned the importance of planning and how just some notes written beforehand can keep a lecture together.
+</p>
+
+<p><span class="label">Grade participation:</span> 11th grade</p>
+<p><span class="label">Time commitment:</span> 5.0 hours per week, 14.0 weeks per year</p>
+
+<hr>
+
+<h2>12. Extracurricular Activity</h2>
+
+<h2>Percussion Studies, Espoo Music Institute</h2>
+
+<p>
+I take weekly percussion lessons at a music school, and I'm currently working on my graduation recital where
+I plan to perform a combination of original and arranged repertoire on the marimba and the vibraphone.
+Playing and listening to music is a great part of my life now, and I practice my instrument daily to relax from studying.
+</p>
+
+<p><span class="label">Grade participation:</span> 9th–12th grade</p>
+<p><span class="label">Time commitment:</span> 10.0 hours per week, 35.0 weeks per year</p>
+
+
 </body>
 </html>
